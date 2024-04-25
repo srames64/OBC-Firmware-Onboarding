@@ -81,6 +81,7 @@ static void thermalMgr(void *pvParameters) {
       float temp;
       error_code_t errCode = readTempLM75BD(LM75BD_OBC_I2C_ADDR, &temp);
       if (errCode != ERR_CODE_SUCCESS){
+        LOG_ERROR_CODE(errCode);
         continue;
       }
       if (temp > LM75BD_DEFAULT_HYST_THRESH) {
